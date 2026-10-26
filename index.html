@@ -1,0 +1,3189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrewTap 🛠️ — Hire Verified Daily Workers via WhatsApp in 60 Seconds</title>
+  <meta name="description" content="CrewTap connects businesses with verified daily-wage workers across Mumbai, Pune & MMR instantly via WhatsApp. Zero apps, multilingual (EN/HI/MR), and wave-dispatched matching.">
+  <meta name="keywords" content="daily wage workers, WhatsApp hiring, event helpers, warehouse loaders, catering staff, labor on demand, CrewTap, Mumbai labor, Pune workers">
+  <meta property="og:title" content="CrewTap — WhatsApp-Powered Daily Workforce Marketplace">
+  <meta property="og:description" content="Book pre-screened daily-wage crew in 60 seconds directly inside WhatsApp. Multilingual, race-safe atomic matching, zero commission from workers.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="crewtap_hero.jpg">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CrewTap Design System — Dark Mode & Glassmorphic Neon Aesthetics
+       ========================================================================== */
+    :root {
+      --primary: #25D366;
+      --primary-hover: #1EBE5D;
+      --primary-dark: #128C7E;
+      --primary-glow: rgba(37, 211, 102, 0.35);
+      --primary-soft: rgba(37, 211, 102, 0.12);
+      
+      --accent-cyan: #38BDF8;
+      --accent-cyan-glow: rgba(56, 189, 248, 0.25);
+      --accent-amber: #F59E0B;
+      --accent-purple: #A855F7;
+      
+      --bg-body: #070B14;
+      --bg-surface: #0D1527;
+      --bg-card: #131E35;
+      --bg-card-hover: #192745;
+      --bg-glass: rgba(19, 30, 53, 0.75);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-card: rgba(56, 189, 248, 0.15);
+      --border-primary: rgba(37, 211, 102, 0.3);
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px rgba(37, 211, 102, 0.22);
+      
+      --font-heading: 'Outfit', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      
+      --whatsapp-bg: #0B141A;
+      --whatsapp-chat-bg: #0C1317;
+      --whatsapp-bubble-out: #005C4B;
+      --whatsapp-bubble-in: #202C33;
+      --whatsapp-teal: #128C7E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(37, 211, 102, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    p {
+      color: var(--text-muted);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    /* Badges & Tags */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+    }
+
+    .badge-primary {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--border-primary);
+    }
+
+    .badge-cyan {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-pulse {
+      position: relative;
+    }
+
+    .badge-pulse::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulseRadar 2s infinite;
+    }
+
+    @keyframes pulseRadar {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #1DA851 100%);
+      color: #051A0E;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #2FF076 0%, var(--primary) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--primary-glow);
+      color: #051A0E;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-icon-pulse {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #FFFFFF 20%, #A5F3FC 60%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-green {
+      background: linear-gradient(135deg, #25D366 0%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ==========================================================================
+       Navigation Bar
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.9rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-switcher-nav {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.2rem;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.775rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: #061A0E;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding: 4.5rem 0 4rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-title {
+      font-size: 3.4rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.35rem;
+      line-height: 1.12;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      max-width: 580px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2.75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .metric-item .metric-value {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .metric-item .metric-label {
+      font-size: 0.825rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* Hero Visual Card */
+    .hero-visual-wrap {
+      position: relative;
+    }
+
+    .hero-visual-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-visual-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 11, 20, 0.1) 0%, rgba(7, 11, 20, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .hero-floating-pill {
+      position: absolute;
+      background: rgba(13, 21, 39, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-card);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 3;
+      animation: floatPill 4s ease-in-out infinite alternate;
+    }
+
+    .pill-top {
+      top: 1.5rem;
+      right: -1rem;
+    }
+
+    .pill-bottom {
+      bottom: 1.5rem;
+      left: -1rem;
+      animation-delay: -2s;
+    }
+
+    @keyframes floatPill {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .pill-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .pill-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .pill-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Interactive WhatsApp Simulator Section
+       ========================================================================== */
+    .simulator-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(13, 21, 39, 0.5) 50%, transparent 100%);
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-header .badge {
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .sim-container {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .sim-controls-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+    }
+
+    .sim-mode-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.35rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .sim-mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .sim-mode-btn.active {
+      background: var(--primary);
+      color: #061A0E;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .sim-step-guide {
+      margin-top: 1.5rem;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Realistic Phone Mockup */
+    .phone-mockup {
+      width: 375px;
+      max-width: 100%;
+      margin: 0 auto;
+      background: #111;
+      border-radius: 46px;
+      padding: 12px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(37, 211, 102, 0.15);
+      border: 4px solid #282828;
+      position: relative;
+    }
+
+    .phone-screen {
+      background: var(--whatsapp-chat-bg);
+      border-radius: 36px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 640px;
+      position: relative;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    /* WhatsApp Status Bar */
+    .phone-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1.25rem 0.3rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94A3B8;
+      background: var(--whatsapp-bg);
+      z-index: 10;
+    }
+
+    /* WhatsApp Header */
+    .whatsapp-header {
+      background: var(--whatsapp-bg);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10;
+    }
+
+    .wa-back-btn {
+      color: #94A3B8;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .wa-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+      position: relative;
+    }
+
+    .wa-avatar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #25D366;
+      border: 2px solid var(--whatsapp-bg);
+    }
+
+    .wa-user-info {
+      flex: 1;
+    }
+
+    .wa-user-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #E9EDEF;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .wa-verified-badge {
+      display: inline-flex;
+      color: var(--primary);
+    }
+
+    .wa-user-status {
+      font-size: 0.725rem;
+      color: var(--primary);
+    }
+
+    /* WhatsApp Chat Body */
+    .chat-body {
+      flex: 1;
+      padding: 1rem 0.85rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      scroll-behavior: smooth;
+    }
+
+    .chat-body::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chat-body::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .date-badge-wrap {
+      text-align: center;
+      margin: 0.35rem 0;
+    }
+
+    .wa-date-pill {
+      display: inline-block;
+      background: #182229;
+      color: #8696A0;
+      font-size: 0.675rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* Chat Messages */
+    .chat-msg {
+      max-width: 86%;
+      border-radius: 10px;
+      padding: 0.55rem 0.75rem;
+      position: relative;
+      font-size: 0.825rem;
+      line-height: 1.45;
+      animation: msgAppear 0.25s ease-out;
+    }
+
+    @keyframes msgAppear {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg-incoming {
+      align-self: flex-start;
+      background: var(--whatsapp-bubble-in);
+      color: #E9EDEF;
+      border-top-left-radius: 2px;
+    }
+
+    .msg-outgoing {
+      align-self: flex-end;
+      background: var(--whatsapp-bubble-out);
+      color: #E9EDEF;
+      border-top-right-radius: 2px;
+    }
+
+    .msg-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.5);
+      float: right;
+      margin-top: 0.25rem;
+      margin-left: 0.5rem;
+    }
+
+    .check-blue {
+      color: #53BDEB;
+    }
+
+    /* WhatsApp Interactive Buttons inside chat */
+    .wa-buttons-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .wa-choice-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #53BDEB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .wa-choice-btn:hover {
+      background: rgba(83, 189, 235, 0.18);
+      border-color: #53BDEB;
+    }
+
+    .wa-choice-btn.primary-cta {
+      background: var(--primary);
+      color: #061A0E;
+      border: none;
+    }
+
+    .wa-choice-btn.primary-cta:hover {
+      background: #2FF076;
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: none;
+      align-self: flex-start;
+      background: var(--whatsapp-bubble-in);
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #8696A0;
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-4px); }
+    }
+
+    /* WhatsApp Input bar */
+    .whatsapp-input-bar {
+      background: var(--whatsapp-bg);
+      padding: 0.6rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .wa-input-box {
+      flex: 1;
+      background: #2A3942;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      color: #E9EDEF;
+      outline: none;
+    }
+
+    .wa-input-box::placeholder {
+      color: #8696A0;
+    }
+
+    .wa-send-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #051A0E;
+      cursor: pointer;
+    }
+
+    .sim-reset-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+    }
+
+    .sim-reset-btn:hover {
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       Interactive Cost & Shift Estimator
+       ========================================================================== */
+    .calculator-section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .calc-input-group {
+      margin-bottom: 2rem;
+    }
+
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .calc-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .calc-val-pill {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.2rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-primary);
+    }
+
+    /* Custom Range Slider */
+    .calc-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--primary-glow);
+      border: 2px solid #fff;
+      transition: transform 0.15s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .role-select, .city-select {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      transition: border 0.2s ease;
+    }
+
+    .role-select:focus, .city-select:focus {
+      border-color: var(--primary);
+    }
+
+    /* Duration Selector Buttons */
+    .duration-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .duration-btn {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .duration-btn.active {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Calc Summary Result Card */
+    .calc-result-box {
+      background: linear-gradient(145deg, #182643 0%, #0F1A30 100%);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-result-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .result-row:last-of-type {
+      border-bottom: none;
+      padding-top: 1.25rem;
+    }
+
+    .result-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .result-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+    }
+
+    .result-total-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .result-total-value {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: var(--font-heading);
+    }
+
+    .calc-badge-row {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .calc-guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #94A3B8;
+    }
+
+    /* ==========================================================================
+       Categories Grid
+       ========================================================================== */
+    .categories-section {
+      padding: 5rem 0;
+    }
+
+    .cat-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cat-tab-btn.active, .cat-tab-btn:hover {
+      background: var(--primary-soft);
+      border-color: var(--border-primary);
+      color: var(--primary);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-card);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .cat-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(56, 189, 248, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .cat-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cat-card p {
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .cat-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+    }
+
+    .cat-rate {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .cat-speed {
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* ==========================================================================
+       Features & Architecture Section
+       ========================================================================== */
+    .features-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, rgba(13, 21, 39, 0.4) 0%, transparent 100%);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-card);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--primary-soft);
+      border: 1px solid var(--border-primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       How It Works Dual Track
+       ========================================================================== */
+    .how-it-works-section {
+      padding: 5rem 0;
+    }
+
+    .hiw-tabs-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hiw-tab-switch {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .hiw-switch-pill {
+      display: inline-flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.35rem;
+    }
+
+    .hiw-pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.75rem 2rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .hiw-pill-btn.active {
+      background: var(--primary);
+      color: #061A0E;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .hiw-track {
+      display: none;
+    }
+
+    .hiw-track.active {
+      display: block;
+    }
+
+    .hiw-steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .hiw-step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hiw-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #061A0E;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hiw-step-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .hiw-step-card p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       Comparison Matrix Table
+       ========================================================================== */
+    .comparison-section {
+      padding: 5rem 0;
+    }
+
+    .comp-table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .comp-table th, .comp-table td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .comp-table th {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .comp-highlight {
+      background: rgba(37, 211, 102, 0.05);
+      border-left: 2px solid var(--primary);
+      border-right: 2px solid var(--primary);
+    }
+
+    .comp-table th.comp-highlight {
+      background: rgba(37, 211, 102, 0.12);
+      color: var(--primary);
+    }
+
+    .comp-table td {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+    }
+
+    .comp-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ==========================================================================
+       Testimonials & Reviews
+       ========================================================================== */
+    .testimonials-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(13, 21, 39, 0.6) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stars-row {
+      color: #FBBF24;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #E2E8F0;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+      border: 1px solid var(--border-primary);
+    }
+
+    .author-info h4 {
+      font-size: 0.925rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .author-info span {
+      font-size: 0.775rem;
+      color: var(--text-dim);
+    }
+
+    /* ==========================================================================
+       FAQ Accordion
+       ========================================================================== */
+    .faq-section {
+      padding: 5rem 0;
+    }
+
+    .faq-container {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item.open {
+      border-color: var(--border-card);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.35rem 1.5rem;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-toggle-icon {
+      font-size: 1.25rem;
+      transition: transform 0.3s ease;
+      color: var(--primary);
+    }
+
+    .faq-item.open .faq-toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 250px;
+      padding-bottom: 1.35rem;
+    }
+
+    /* ==========================================================================
+       Final CTA Banner with WhatsApp QR
+       ========================================================================== */
+    .final-cta-section {
+      padding: 5rem 0;
+    }
+
+    .cta-banner {
+      background: radial-gradient(circle at 10% 20%, rgba(37, 211, 102, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                  var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 28px;
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .cta-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+    }
+
+    .cta-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .qr-card-box {
+      background: #0B141A;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .qr-wrapper {
+      background: #FFFFFF;
+      padding: 1rem;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .qr-svg {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+
+    .qr-hint {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Footer
+       ========================================================================== */
+    .site-footer {
+      background: #040810;
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand p {
+      margin-top: 1rem;
+      max-width: 320px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ==========================================================================
+       Sticky Floating WhatsApp CTA
+       ========================================================================== */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 99;
+      background: #25D366;
+      color: #061A0E;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .floating-wa-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .floating-wa-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    .floating-wa-tooltip {
+      position: absolute;
+      right: 70px;
+      background: #111B21;
+      color: #E9EDEF;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ==========================================================================
+       Responsive Media Queries
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 2.75rem; }
+      .hero-grid, .sim-container, .calc-card, .cta-banner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .features-grid, .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hiw-steps-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-toggle { display: block; }
+      .hero-title { font-size: 2.25rem; }
+      .hero-metrics { grid-template-columns: 1fr; gap: 1rem; }
+      .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .calc-card { padding: 1.75rem; }
+      .cta-banner { padding: 2.5rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .floating-wa-btn { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
+      .pill-top, .pill-bottom { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Floating Sticky WhatsApp Action Button
+       ========================================================================== -->
+  <a href="https://wa.me/?text=Hi%20CrewTap" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" id="stickyWhatsAppBtn" title="Chat with CrewTap Bot on WhatsApp">
+    <div class="floating-wa-tooltip">Chat with CrewTap Bot 🛠️</div>
+    <svg viewBox="0 0 24 24">
+      <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.534 3.738 1.547 5.323L2 22l4.808-1.517a9.99 9.99 0 005.223 1.548h.004c5.535 0 10.03-4.495 10.03-10.031 0-2.68-1.043-5.2-2.937-7.094A9.96 9.96 0 0012.031 2zm0 18.257h-.003a8.17 8.17 0 01-4.256-1.189l-.305-.181-3.155.996.996-3.08-.198-.315a8.216 8.216 0 01-1.258-4.457c0-4.524 3.68-8.204 8.204-8.204 2.192 0 4.252.854 5.802 2.404 1.55 1.55 2.404 3.61 2.404 5.802 0 4.524-3.68 8.204-8.204 8.204zm4.496-6.143c-.246-.123-1.458-.72-1.684-.803-.226-.082-.391-.123-.555.123-.165.247-.637.803-.781.968-.144.165-.288.185-.535.062-.246-.124-1.042-.384-1.985-1.225-.733-.654-1.229-1.463-1.373-1.71-.144-.247-.015-.38.108-.503.111-.111.247-.288.37-.432.124-.144.165-.247.247-.412.082-.165.041-.309-.021-.432-.062-.124-.555-1.338-.761-1.832-.201-.48-.405-.415-.555-.423-.144-.008-.309-.01-.473-.01s-.432.062-.658.309c-.226.247-.864.844-.864 2.058s.885 2.387 1.008 2.552c.124.165 1.74 2.656 4.215 3.725.589.255 1.049.407 1.408.521.592.188 1.131.161 1.557.098.475-.071 1.458-.596 1.664-1.173.205-.576.205-1.07.144-1.173-.062-.103-.226-.165-.473-.288z"/>
+    </svg>
+  </a>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <span>CrewTap<span style="color:var(--primary);">.</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#simulator">Live Simulator</a></li>
+        <li><a href="#categories">Roles & Wages</a></li>
+        <li><a href="#calculator">Cost Estimator</a></li>
+        <li><a href="#advantages">Why CrewTap</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Multilingual indicator matching i18n.js -->
+        <div class="lang-switcher-nav" id="globalLangSwitch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+          <button class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+
+        <a href="https://wa.me/?text=Hi%20CrewTap" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          <span>Book on WhatsApp</span>
+        </a>
+
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Hero Section
+       ========================================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-row">
+            <span class="badge badge-primary badge-pulse">⚡ Live in Mumbai, Pune & MMR</span>
+            <span class="badge badge-cyan">Zero App Required • 100% WhatsApp</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hire Verified Daily Workers in <span class="text-gradient-green">60 Seconds</span> — From WhatsApp.
+          </h1>
+
+          <p class="hero-desc">
+            Skip untrustworthy contractors and bloated apps. CrewTap matches event organizers, warehouses, caterers, and builders with qualified daily-wage crews in English, Hindi, and Marathi with race-safe atomic dispatch.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="https://wa.me/?text=Hi%20CrewTap" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.534 3.738 1.547 5.323L2 22l4.808-1.517a9.99 9.99 0 005.223 1.548h.004c5.535 0 10.03-4.495 10.03-10.031 0-2.68-1.043-5.2-2.937-7.094A9.96 9.96 0 0012.031 2zm0 18.257h-.003a8.17 8.17 0 01-4.256-1.189l-.305-.181-3.155.996.996-3.08-.198-.315a8.216 8.216 0 01-1.258-4.457c0-4.524 3.68-8.204 8.204-8.204 2.192 0 4.252.854 5.802 2.404 1.55 1.55 2.404 3.61 2.404 5.802 0 4.524-3.68 8.204-8.204 8.204zm4.496-6.143c-.246-.123-1.458-.72-1.684-.803-.226-.082-.391-.123-.555.123-.165.247-.637.803-.781.968-.144.165-.288.185-.535.062-.246-.124-1.042-.384-1.985-1.225-.733-.654-1.229-1.463-1.373-1.71-.144-.247-.015-.38.108-.503.111-.111.247-.288.37-.432.124-.144.165-.247.247-.412.082-.165.041-.309-.021-.432-.062-.124-.555-1.338-.761-1.832-.201-.48-.405-.415-.555-.423-.144-.008-.309-.01-.473-.01s-.432.062-.658.309c-.226.247-.864.844-.864 2.058s.885 2.387 1.008 2.552c.124.165 1.74 2.656 4.215 3.725.589.255 1.049.407 1.408.521.592.188 1.131.161 1.557.098.475-.071 1.458-.596 1.664-1.173.205-.576.205-1.07.144-1.173-.062-.103-.226-.165-.473-.288z"/>
+              </svg>
+              <span>Message Bot to Book</span>
+            </a>
+            <a href="#simulator" class="btn btn-secondary">
+              <span>Try Live Interactive Demo ↓</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-value">12 Min</div>
+              <div class="metric-label">Avg. Shift Fulfillment</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">0% Cut</div>
+              <div class="metric-label">100% Wage To Workers</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">5,200+</div>
+              <div class="metric-label">Verified Active Crew</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Media & Floating Cards -->
+        <div class="hero-visual-wrap">
+          <div class="hero-visual-card">
+            <img src="crewtap_hero.jpg" alt="Smiling Indian warehouse and event logistics workers ready for deployment on CrewTap" class="hero-image" loading="lazy">
+            <div class="hero-visual-overlay"></div>
+          </div>
+
+          <!-- Floating Pill Top -->
+          <div class="hero-floating-pill pill-top">
+            <div class="pill-icon" style="background: rgba(37, 211, 102, 0.2); color: #25D366;">⚡</div>
+            <div>
+              <div class="pill-title">Wave Alert Dispatched!</div>
+              <div class="pill-sub">4 Loaders matched in Bhiwandi (9m ago)</div>
+            </div>
+          </div>
+
+          <!-- Floating Pill Bottom -->
+          <div class="hero-floating-pill pill-bottom">
+            <div class="pill-icon" style="background: rgba(56, 189, 248, 0.2); color: #38BDF8;">🛡️</div>
+            <div>
+              <div class="pill-title">Atomic Race-Safe Claim</div>
+              <div class="pill-sub">Zero double-bookings guaranteed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive WhatsApp Chatbot Simulator
+       ========================================================================== -->
+  <section class="simulator-section" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Interactive Product Sandbox</span>
+        <h2 class="section-title">Test the CrewTap WhatsApp Experience</h2>
+        <p class="section-sub">
+          Experience the actual 9-step booking flow and 5-step worker onboarding below. Click any interactive button inside the mock phone to simulate real-time replies!
+        </p>
+      </div>
+
+      <div class="sim-container">
+        <!-- Simulator Controls & Explanation -->
+        <div class="sim-controls-card">
+          <div class="sim-mode-toggle">
+            <button class="sim-mode-btn active" id="modeClientBtn" onclick="switchSimMode('client')">
+              🏢 Business (Hire Crew)
+            </button>
+            <button class="sim-mode-btn" id="modeWorkerBtn" onclick="switchSimMode('worker')">
+              👷 Worker (Find Shifts)
+            </button>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">
+              Simulate in Language:
+            </label>
+            <div class="lang-switcher-nav" style="width: fit-content;">
+              <button class="lang-btn active" onclick="setSimLanguage('en')">English</button>
+              <button class="lang-btn" onclick="setSimLanguage('hi')">हिंदी (Hindi)</button>
+              <button class="lang-btn" onclick="setSimLanguage('mr')">मराठी (Marathi)</button>
+            </div>
+          </div>
+
+          <div class="sim-step-guide" id="simStepGuide">
+            <!-- Populated dynamically via JS -->
+          </div>
+
+          <button class="sim-reset-btn" onclick="resetSimulator()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>
+            </svg>
+            Restart Conversation Flow
+          </button>
+        </div>
+
+        <!-- Phone Mockup Container -->
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <!-- Phone Status Bar -->
+            <div class="phone-status-bar">
+              <span id="phoneClock">09:41</span>
+              <span>●●● 5G 98%</span>
+            </div>
+
+            <!-- WhatsApp Header -->
+            <div class="whatsapp-header">
+              <div class="wa-back-btn">‹</div>
+              <div class="wa-avatar">🛠️</div>
+              <div class="wa-user-info">
+                <div class="wa-user-name">
+                  CrewTap Bot
+                  <span class="wa-verified-badge" title="Official Verified WhatsApp Business Account">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="wa-user-status">Official Business Account • Online</div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Chat Message Stream -->
+            <div class="chat-body" id="chatBody">
+              <div class="date-badge-wrap">
+                <span class="wa-date-pill">TODAY</span>
+              </div>
+              <!-- Messages generated by JS -->
+            </div>
+
+            <!-- Typing indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+
+            <!-- Fake Input Bar -->
+            <div class="whatsapp-input-bar">
+              <input type="text" class="wa-input-box" id="waInputBox" placeholder="Type a message or tap button..." onkeypress="handleInputKeyPress(event)">
+              <button class="wa-send-btn" onclick="handleSendText()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive Shift Cost & Headcount Estimator
+       ========================================================================== -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Transparent Pricing</span>
+        <h2 class="section-title">Instant Shift Cost & Wage Calculator</h2>
+        <p class="section-sub">
+          Calculate your shift budget transparently with zero contractor markups. You pay workers directly upon shift completion.
+        </p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-inputs">
+          <!-- Worker Count Slider -->
+          <div class="calc-input-group">
+            <div class="calc-label-row">
+              <span class="calc-label">Number of Workers Needed</span>
+              <span class="calc-val-pill" id="valWorkerCount">4 Workers</span>
+            </div>
+            <input type="range" class="calc-slider" id="sliderWorkers" min="1" max="30" value="4" oninput="updateCalculator()">
+          </div>
+
+          <!-- Shift Duration -->
+          <div class="calc-input-group">
+            <div class="calc-label-row">
+              <span class="calc-label">Shift Duration</span>
+              <span class="calc-val-pill" id="valDurationLabel">8 Hours (Full Shift)</span>
+            </div>
+            <div class="duration-pills">
+              <button class="duration-btn" data-hours="4" onclick="setCalcDuration(4)">4h (Half Shift)</button>
+              <button class="duration-btn active" data-hours="8" onclick="setCalcDuration(8)">8h (Full Shift)</button>
+              <button class="duration-btn" data-hours="12" onclick="setCalcDuration(12)">12h (Extended)</button>
+            </div>
+          </div>
+
+          <!-- Role / Category Select -->
+          <div class="calc-input-group">
+            <div class="calc-label-row">
+              <span class="calc-label">Worker Role / Skill Type</span>
+            </div>
+            <select class="role-select" id="calcRoleSelect" onchange="updateCalculator()">
+              <option value="600" data-role="General Helper / Cleaner">General Helper / Cleaner (₹600 / 8h)</option>
+              <option value="750" data-role="Warehouse Loader / Packer" selected>Warehouse Loader / Packer (₹750 / 8h)</option>
+              <option value="850" data-role="Catering & Event Steward">Catering & Event Steward (₹850 / 8h)</option>
+              <option value="950" data-role="Construction / Renovation Hand">Construction / Renovation Hand (₹950 / 8h)</option>
+              <option value="1100" data-role="Semi-Skilled / Maintenance">Semi-Skilled Painter / Carpenter (₹1,100 / 8h)</option>
+            </select>
+          </div>
+
+          <!-- City Region -->
+          <div class="calc-input-group" style="margin-bottom: 0;">
+            <div class="calc-label-row">
+              <span class="calc-label">Operating Location</span>
+            </div>
+            <select class="city-select" id="calcCitySelect" onchange="updateCalculator()">
+              <option value="mumbai">Mumbai & Suburban (Andheri, BKC, Dadar, Thane)</option>
+              <option value="navi_mumbai">Navi Mumbai & Panvel</option>
+              <option value="pune">Pune & PCMC (Hinjawadi, Hadapsar, Chakan)</option>
+              <option value="bhiwandi">Bhiwandi Logistics Cluster</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Summary Result Box -->
+        <div class="calc-result-box">
+          <div class="result-row">
+            <span class="result-label">Base Rate per Worker:</span>
+            <span class="result-value" id="resBaseRate">₹750</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Crew Headcount:</span>
+            <span class="result-value" id="resHeadcount">4 Crew Members</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Platform Cut to Worker:</span>
+            <span class="result-value" style="color:var(--primary);">₹0 (100% Retained)</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Est. Match Speed:</span>
+            <span class="result-value" style="color:var(--accent-cyan);">⚡ Under 15 Minutes</span>
+          </div>
+          <div class="result-row">
+            <span class="result-total-label">Total Crew Payout:</span>
+            <span class="result-total-value" id="resTotalCost">₹3,000</span>
+          </div>
+
+          <div class="calc-badge-row">
+            <div class="calc-guarantee-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Zero upfront booking fee — pay after work completion</span>
+            </div>
+            <div class="calc-guarantee-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Wave alert auto-replaces no-shows in minutes</span>
+            </div>
+          </div>
+
+          <a href="#" id="calcBookBtn" class="btn btn-primary" style="width: 100%;">
+            <span>Book This Exact Crew on WhatsApp →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Industry Categories & Daily Wage Grid
+       ========================================================================== -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Flexible Workforce Categories</span>
+        <h2 class="section-title">Verified Daily Crews for Every Industry</h2>
+        <p class="section-sub">
+          From 2 extra helpers for a banquet to 30 warehouse loaders for a nocturnal unloading shift, CrewTap matches verified workers instantly.
+        </p>
+      </div>
+
+      <div class="cat-tabs" id="categoryTabs">
+        <button class="cat-tab-btn active" data-filter="all">All Roles</button>
+        <button class="cat-tab-btn" data-filter="logistics">Logistics & Warehousing</button>
+        <button class="cat-tab-btn" data-filter="hospitality">Events & Hospitality</button>
+        <button class="cat-tab-btn" data-filter="construction">Construction & Renovation</button>
+        <button class="cat-tab-btn" data-filter="facility">Cleaning & Facility</button>
+      </div>
+
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Category Card 1 -->
+        <div class="cat-card" data-category="logistics">
+          <div class="cat-icon-wrap">📦</div>
+          <h3>Warehouse Loader & Unloader</h3>
+          <p>Heavy lifting, container de-stuffing, palette stacking, and inventory arrangement for fulfillment centers.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹700 - ₹850 / day</span>
+            <span class="cat-speed">⚡ ~11 min match</span>
+          </div>
+        </div>
+
+        <!-- Category Card 2 -->
+        <div class="cat-card" data-category="hospitality">
+          <div class="cat-icon-wrap">🍽️</div>
+          <h3>Catering Waitstaff & Stewards</h3>
+          <p>Groomed banquet servers, plate clearing crew, buffet attendants, and kitchen assistants for weddings & corporate events.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹800 - ₹1,000 / day</span>
+            <span class="cat-speed">⚡ ~14 min match</span>
+          </div>
+        </div>
+
+        <!-- Category Card 3 -->
+        <div class="cat-card" data-category="construction">
+          <div class="cat-icon-wrap">🏗️</div>
+          <h3>Construction & Debris Helpers</h3>
+          <p>Cement mixing, brick carrying, site clearance, scaffolding assistance, and post-demolition debris hauling.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹750 - ₹950 / day</span>
+            <span class="cat-speed">⚡ ~12 min match</span>
+          </div>
+        </div>
+
+        <!-- Category Card 4 -->
+        <div class="cat-card" data-category="hospitality">
+          <div class="cat-icon-wrap">🎪</div>
+          <h3>Event Stage & Setup Crew</h3>
+          <p>Truss assembly, booth arrangement, sound & light equipment loading, and rapid venue teardown.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹850 - ₹1,100 / day</span>
+            <span class="cat-speed">⚡ ~9 min match</span>
+          </div>
+        </div>
+
+        <!-- Category Card 5 -->
+        <div class="cat-card" data-category="facility">
+          <div class="cat-icon-wrap">🧹</div>
+          <h3>Commercial Cleaning & Deep Clean</h3>
+          <p>Post-event cleanup, warehouse floor scrubbing, office sanitization, and festival preparation crews.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹650 - ₹800 / day</span>
+            <span class="cat-speed">⚡ ~15 min match</span>
+          </div>
+        </div>
+
+        <!-- Category Card 6 -->
+        <div class="cat-card" data-category="logistics">
+          <div class="cat-icon-wrap">🚚</div>
+          <h3>Delivery & Dispatch Helpers</h3>
+          <p>Ride-along assistants for tempos & mini-trucks, residential delivery support, and parcel sorters.</p>
+          <div class="cat-meta-row">
+            <span class="cat-rate">₹700 - ₹900 / day</span>
+            <span class="cat-speed">⚡ ~13 min match</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Features & Wave-Dispatch Architecture
+       ========================================================================== -->
+  <section class="features-section" id="advantages">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Under The Hood</span>
+        <h2 class="section-title">Why CrewTap Outperforms Traditional Hiring</h2>
+        <p class="section-sub">
+          Built on Cloudflare Workers edge nodes and Supabase Postgres atomic functions, delivering zero downtime and zero double-assignments.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-badge">🌊</div>
+          <h3>Wave-Alert Dispatch</h3>
+          <p>Jobs aren't broadcast blindly to hundreds of phones. CrewTap alerts pre-screened local workers in staggered waves of 5, prioritizing rapid responders while honoring WhatsApp 24h free windows.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-badge">🔒</div>
+          <h3>Atomic Postgres Claiming</h3>
+          <p>Our custom SQL <code>claim_job()</code> engine with row-level locks ensures that when you need 4 workers, exactly 4 workers are assigned. Zero race conditions, even during high-concurrency peak hours.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-badge">🌐</div>
+          <h3>Native Trilingual Bot</h3>
+          <p>Built with native localization in English, Hindi (हिंदी), and Marathi (मराठी). Workers interact in their mother tongue with clear yes/no buttons, eliminating literacy friction.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-badge">🤝</div>
+          <h3>0% Worker Commission</h3>
+          <p>Traditional contractors siphon 25% to 40% of a daily-wage worker's pay. CrewTap gives 100% of the agreed wage directly to the workers, leading to higher show-up rates and motivated crews.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-badge">⚡</div>
+          <h3>Zero-Infrastructure Speed</h3>
+          <p>No 80MB mobile app to download from an app store. No user accounts to remember. The entire booking, reminder, and confirmation lifecycle runs inside WhatsApp, which 99% of workers already use daily.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-badge">🛡️</div>
+          <h3>Verified & Monitored</h3>
+          <p>Workers are pre-registered with verified phone numbers, preferred work areas, and trade specialties. Automated check-ins notify you the moment workers confirm attendance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       How It Works Dual Track
+       ========================================================================== -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Simple 3-Step Journey</span>
+        <h2 class="section-title">How CrewTap Works</h2>
+        <p class="section-sub">Tailored simplicity whether you are looking to hire crew or looking for daily shifts.</p>
+      </div>
+
+      <div class="hiw-tabs-container">
+        <div class="hiw-tab-switch">
+          <div class="hiw-switch-pill">
+            <button class="hiw-pill-btn active" id="hiwClientBtn" onclick="switchHiwTrack('client')">For Employers / Businesses</button>
+            <button class="hiw-pill-btn" id="hiwWorkerBtn" onclick="switchHiwTrack('worker')">For Daily Wage Workers</button>
+          </div>
+        </div>
+
+        <!-- Employer Track -->
+        <div class="hiw-track active" id="hiwClientTrack">
+          <div class="hiw-steps-row">
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">1</div>
+              <h3>Text 'Hi' on WhatsApp</h3>
+              <p>Answer a quick guided questionnaire: business name, date, start time, duration, and number of workers needed.</p>
+            </div>
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">2</div>
+              <h3>Automated Wave Matching</h3>
+              <p>Our dispatch algorithm alerts qualified workers in nearby pincodes. Workers accept with 1 tap on their phone.</p>
+            </div>
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">3</div>
+              <h3>Crew Arrives & Direct Pay</h3>
+              <p>You receive real-time confirmations and contact details. Workers complete the shift and you pay them directly.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Worker Track -->
+        <div class="hiw-track" id="hiwWorkerTrack">
+          <div class="hiw-steps-row">
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">1</div>
+              <h3>Reply 'REGISTER'</h3>
+              <p>Share your name, service area (e.g. Andheri, Pune), skills, and availability in Hindi, Marathi, or English.</p>
+            </div>
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">2</div>
+              <h3>Receive Instant Job Alerts</h3>
+              <p>Get notified directly on WhatsApp when shifts in your area match your trade with clear wages and timings.</p>
+            </div>
+            <div class="hiw-step-card">
+              <div class="hiw-step-num">3</div>
+              <h3>Tap Confirm & Earn 100%</h3>
+              <p>Tap "✅ Confirm" to lock your spot. Show up at the site, work the shift, and receive your full wages without commission cuts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Comparison Matrix Table
+       ========================================================================== -->
+  <section class="comparison-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Head-to-Head Comparison</span>
+        <h2 class="section-title">CrewTap vs. The Alternatives</h2>
+        <p class="section-sub">See how WhatsApp-first matching outperforms manual contractors and heavy mobile apps.</p>
+      </div>
+
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature / Criteria</th>
+              <th class="comp-highlight">CrewTap (WhatsApp)</th>
+              <th>Traditional Labor Contractor</th>
+              <th>Typical Mobile Gig Apps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Onboarding Friction</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">Zero apps — 100% WhatsApp</td>
+              <td>Phone calls, manual bargaining</td>
+              <td>80MB download, complex signup</td>
+            </tr>
+            <tr>
+              <td><strong>Average Match Speed</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">< 15 Minutes</td>
+              <td>Hours or next-day only</td>
+              <td>30 - 60 minutes</td>
+            </tr>
+            <tr>
+              <td><strong>Commission from Worker</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">0% (Free forever)</td>
+              <td>25% – 40% skimmed</td>
+              <td>15% – 25% platform cut</td>
+            </tr>
+            <tr>
+              <td><strong>Language Accessibility</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">English, Hindi, Marathi</td>
+              <td>Hindi/Regional spoken only</td>
+              <td>Primarily English UI</td>
+            </tr>
+            <tr>
+              <td><strong>Overbooking Prevention</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">Atomic Postgres locks (0% error)</td>
+              <td>High manual confusion & no-shows</td>
+              <td>Moderate race conditions</td>
+            </tr>
+            <tr>
+              <td><strong>Worker Reliability & Show-up</strong></td>
+              <td class="comp-highlight" style="color:var(--primary); font-weight:700;">High (Workers keep 100% wage)</td>
+              <td>Unpredictable & erratic</td>
+              <td>Medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Testimonials & Reviews
+       ========================================================================== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Trusted by 250+ Businesses</span>
+        <h2 class="section-title">What Founders & Supervisors Say</h2>
+        <p class="section-sub">Real stories from businesses scaling their daily operations with CrewTap.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="testimonial-quote">
+              "We had a 40-foot container arriving in Bhiwandi at 11 PM and our usual contractor ghosted us. We messaged CrewTap on WhatsApp and had 6 loaders confirmed in 14 minutes. Lifesaver."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">RK</div>
+            <div class="author-info">
+              <h4>Rajesh Kulkarni</h4>
+              <span>Warehouse Manager, Bhiwandi Logistics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="testimonial-quote">
+              "For catering banquets, worker punctuality is everything. Because CrewTap pays workers 100% of the wage without middlemen cuts, workers actually show up smiling and on time."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <h4>Anjali Mehta</h4>
+              <span>Founder, Saffron & Spice Caterers, Pune</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="testimonial-quote">
+              "मला व्हॉट्सॲपवर मराठीत मेसेज येतात. काम मिळवणं एकदम सोपं झालं आहे. कोणतीही ॲप डाउनलोड करावी लागत नाही. पैसेही पूर्ण मिळतात!"
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">SS</div>
+            <div class="author-info">
+              <h4>Santosh Shinde</h4>
+              <span>Verified Event Setup Crew Member</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive FAQ Accordion
+       ========================================================================== -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Answers to Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-sub">Everything you need to know about booking or working with CrewTap.</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Do I or my workers need to download any application?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No! CrewTap is 100% WhatsApp-native. You and your workers simply send messages to our verified WhatsApp Business account. There are no app store downloads, logins, passwords, or storage penalties.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do payments work between clients and workers?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>You pay workers directly via UPI, cash, or bank transfer once their shift is completed. CrewTap does not hold or skim worker wages, ensuring complete transparency and direct trust.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What happens if a worker cancels or doesn't show up?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Our wave-dispatch system maintains automated standby lists. If a worker cancels their confirmation, CrewTap immediately fires Wave 2 to alert backup qualified workers in the vicinity within minutes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which languages does the CrewTap bot support?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>CrewTap offers full native support for English, Hindi (हिंदी), and Marathi (मराठी). You can switch your preferred language at any time simply by replying "LANG" in the chat.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do workers register on the platform?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Workers simply send "REGISTER" to our WhatsApp number. The bot asks 5 simple questions: Name, Area, Skills, Availability, and Consent. Once completed, they are active and start receiving nearby job notifications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Final CTA Banner with WhatsApp QR
+       ========================================================================== -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-content">
+          <span class="badge badge-primary" style="margin-bottom: 1rem;">Ready in Under 60 Seconds</span>
+          <h2>Ready to Hire Reliable Crew Today?</h2>
+          <p>
+            Say goodbye to labor shortages and unreliable thekedars. Message CrewTap on WhatsApp now and get your shift crew confirmed in minutes.
+          </p>
+          <div style="display:flex; gap: 1rem; flex-wrap:wrap;">
+            <a href="https://wa.me/?text=Hi%20CrewTap" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.534 3.738 1.547 5.323L2 22l4.808-1.517a9.99 9.99 0 005.223 1.548h.004c5.535 0 10.03-4.495 10.03-10.031 0-2.68-1.043-5.2-2.937-7.094A9.96 9.96 0 0012.031 2zm0 18.257h-.003a8.17 8.17 0 01-4.256-1.189l-.305-.181-3.155.996.996-3.08-.198-.315a8.216 8.216 0 01-1.258-4.457c0-4.524 3.68-8.204 8.204-8.204 2.192 0 4.252.854 5.802 2.404 1.55 1.55 2.404 3.61 2.404 5.802 0 4.524-3.68 8.204-8.204 8.204zm4.496-6.143c-.246-.123-1.458-.72-1.684-.803-.226-.082-.391-.123-.555.123-.165.247-.637.803-.781.968-.144.165-.288.185-.535.062-.246-.124-1.042-.384-1.985-1.225-.733-.654-1.229-1.463-1.373-1.71-.144-.247-.015-.38.108-.503.111-.111.247-.288.37-.432.124-.144.165-.247.247-.412.082-.165.041-.309-.021-.432-.062-.124-.555-1.338-.761-1.832-.201-.48-.405-.415-.555-.423-.144-.008-.309-.01-.473-.01s-.432.062-.658.309c-.226.247-.864.844-.864 2.058s.885 2.387 1.008 2.552c.124.165 1.74 2.656 4.215 3.725.589.255 1.049.407 1.408.521.592.188 1.131.161 1.557.098.475-.071 1.458-.596 1.664-1.173.205-.576.205-1.07.144-1.173-.062-.103-.226-.165-.473-.288z"/>
+              </svg>
+              <span>Chat with CrewTap Bot</span>
+            </a>
+            <a href="privacy.html" class="btn btn-secondary">
+              <span>Privacy Policy</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="qr-card-box">
+          <div class="qr-wrapper">
+            <!-- Sleek SVG QR Code Placeholder -->
+            <svg class="qr-svg" viewBox="0 0 100 100" fill="#000">
+              <path d="M0,0 h30 v30 h-30 z M5,5 v20 h20 v-20 z M10,10 h10 v10 h-10 z"/>
+              <path d="M70,0 h30 v30 h-30 z M75,5 v20 h20 v-20 z M80,10 h10 v10 h-10 z"/>
+              <path d="M0,70 h30 v30 h-30 z M5,75 v20 h20 v-20 z M10,80 h10 v10 h-10 z"/>
+              <rect x="35" y="5" width="10" height="10"/>
+              <rect x="50" y="5" width="10" height="20"/>
+              <rect x="35" y="20" width="10" height="15"/>
+              <rect x="10" y="35" width="15" height="10"/>
+              <rect x="30" y="40" width="20" height="20"/>
+              <rect x="55" y="35" width="15" height="15"/>
+              <rect x="75" y="35" width="20" height="10"/>
+              <rect x="40" y="70" width="15" height="10"/>
+              <rect x="60" y="65" width="10" height="25"/>
+              <rect x="80" y="75" width="15" height="15"/>
+              <rect x="35" y="85" width="20" height="10"/>
+            </svg>
+          </div>
+          <div style="font-weight: 700; color: #fff; margin-bottom: 0.25rem;">Scan to Open WhatsApp</div>
+          <p class="qr-hint">Scan with your mobile camera to chat directly with our verified bot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon-wrap" style="width: 32px; height: 32px;">🛠️</div>
+            <span>CrewTap<span style="color:var(--primary);">.</span></span>
+          </a>
+          <p>
+            Connecting businesses with verified daily-wage workers via WhatsApp. Free forever for workers, zero infrastructure, and atomic dispatch.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#simulator">Interactive Demo</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#calculator">Cost Calculator</a></li>
+            <li><a href="#categories">Worker Categories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Industries</h4>
+          <ul class="footer-links">
+            <li><a href="#categories">Warehousing & Logistics</a></li>
+            <li><a href="#categories">Events & Banquets</a></li>
+            <li><a href="#categories">Catering Stewards</a></li>
+            <li><a href="#categories">Construction Helpers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Support</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://wa.me/?text=Help" target="_blank" rel="noopener noreferrer">WhatsApp Support</a></li>
+            <li><a href="#simulator">Bot Testing</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 CrewTap Technologies. All rights reserved. Built with Cloudflare Workers & Supabase.</div>
+        <div>Zero Commission For Workers • Proudly Made for India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Application Logic (Vanilla JavaScript)
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       CrewTap State Machine & Multi-Language Strings (Synced with i18n.js)
+       ========================================================================== */
+    const SIM_I18N = {
+      en: {
+        welcome: "Welcome to CrewTap! 🛠️\nConnecting businesses with daily-wage workers.\n\nWhat would you like to do?",
+        btn_get_workers: "1️⃣ Get Workers",
+        btn_register: "👷 Register as Worker",
+        q_biz: "Please enter your Business or Company Name:",
+        q_contact: "What is your Contact Name?",
+        q_location: "Where is the job site located? (Area / City / Pincode)",
+        q_date: "Which date do you need the crew for?",
+        q_time: "What time should the crew arrive? (e.g. 9:00 AM, 7:00 PM)",
+        q_duration: "How many hours is the shift? (e.g. 4 hours, 8 hours, 12 hours)",
+        q_workers: "How many workers do you need? (e.g. 2, 4, 10)",
+        q_pay: "What is the pay per worker? (e.g. ₹750/day)",
+        summary_title: "📋 Please confirm your booking details:",
+        btn_confirm: "✅ Confirm Booking",
+        btn_cancel: "❌ Cancel",
+        confirmed_msg: "🎉 Booking Confirmed! Wave 1 alerts dispatched to local verified workers. You will receive notifications as workers confirm.",
+        w_welcome: "Welcome to CrewTap Worker Registration! 👷\nFind high-paying daily shifts in your neighborhood.\n\nWhat is your Full Name?",
+        w_area: "Which areas or pincodes do you prefer to work in? (e.g. Andheri, BKC, Thane, Pune)",
+        w_skills: "What are your primary skills? (e.g. Loader, Helper, Waiter, Cleaner, Painter)",
+        w_avail: "What is your availability? (e.g. All Days, Weekends Only, Night Shifts)",
+        w_consent: "Do you consent to receiving free job notifications on WhatsApp? Reply YES to proceed.",
+        w_done: "✅ Registration Complete! You are now active in our verified worker pool. You will receive WhatsApp alerts whenever matching jobs open.",
+        alert_mock: "🚨 URGENT JOB ALERT: 4 Loaders needed for Andheri East tomorrow, 9:00 AM - 5:00 PM. Pay: ₹750. Tap Confirm to accept!",
+        btn_accept: "✅ Confirm Shift",
+        btn_decline: "❌ Decline",
+        claimed_msg: "🎯 Shift Claimed! Your spot is confirmed via atomic claim. Client contact: Rajesh (Warehouse Mgr). Good luck!"
+      },
+      hi: {
+        welcome: "क्रूटैप (CrewTap) में आपका स्वागत है! 🛠️\nव्यापारियों को दैनिक वेतन श्रमिकों से जोड़ना।\n\nआप क्या करना चाहते हैं?",
+        btn_get_workers: "1️⃣ कामगार चाहिए (Get Workers)",
+        btn_register: "👷 कामगार पंजीकरण (Register)",
+        q_biz: "कृपया अपना या अपने व्यवसाय का नाम दर्ज करें:",
+        q_contact: "संपर्क व्यक्ति का नाम क्या है?",
+        q_location: "काम का स्थान कहाँ है? (क्षेत्र / शहर / पिनकोड)",
+        q_date: "आपको कामगार किस तारीख को चाहिए?",
+        q_time: "कामगार किस समय पहुंचे? (उदा. सुबह 9:00, शाम 7:00)",
+        q_duration: "काम कितने घंटे का है? (उदा. 4 घंटे, 8 घंटे)",
+        q_workers: "आपको कितने कामगार चाहिए? (उदा. 2, 4, 10)",
+        q_pay: "प्रति कामगार वेतन कितना होगा? (उदा. ₹750/दिन)",
+        summary_title: "📋 कृपया बुकिंग विवरण की पुष्टि करें:",
+        btn_confirm: "✅ पुष्टि करें (Confirm)",
+        btn_cancel: "❌ रद्द करें (Cancel)",
+        confirmed_msg: "🎉 बुकिंग की पुष्टि हो गई! वेव 1 अलर्ट नजदीकी कामगारों को भेज दिया गया है। जैसे ही कामगार स्वीकार करेंगे आपको सूचित किया जाएगा।",
+        w_welcome: "क्रूटैप कामगार पंजीकरण में आपका स्वागत है! 👷\nकृपया अपना पूरा नाम लिखें:",
+        w_area: "आप किस क्षेत्र में काम करना पसंद करते हैं? (उदा. अंधेरी, पुणे, ठाणे)",
+        w_skills: "आपका मुख्य हुनर क्या है? (उदा. लोडर, हेल्पर, वेटर, सफाई)",
+        w_avail: "आपकी उपलब्धता क्या है? (उदा. सभी दिन, केवल सप्ताहांत)",
+        w_consent: "क्या आप व्हाट्सएप पर नौकरी अलर्ट प्राप्त करने की सहमति देते हैं? आगे बढ़ने के लिए हाँ (YES) चुनें।",
+        w_done: "✅ पंजीकरण पूरा हुआ! अब आप हमारे सत्यापित पूल में हैं। नया काम आने पर आपको तुरंत सूचना मिलेगी।",
+        alert_mock: "🚨 नया काम उपलब्ध: अंधेरी में कल सुबह 9 बजे 4 लोडर चाहिए। वेतन: ₹750। स्वीकार करने के लिए पुष्टि करें!",
+        btn_accept: "✅ निश्चित करें",
+        btn_decline: "❌ रद्द करें",
+        claimed_msg: "🎯 काम निश्चित हुआ! आपकी जगह सुरक्षित है। संपर्क: राजेश (मैनेजर)। शुभकामनाएं!"
+      },
+      mr: {
+        welcome: "क्रूटॅप (CrewTap) मध्ये आपले स्वागत आहे! 🛠️\nव्यवसाय आणि रोजंदारी कामगारांना थेट जोडणारे व्यासपीठ.\n\nतुम्हाला काय करायचे आहे?",
+        btn_get_workers: "1️⃣ कामगार हवे आहेत",
+        btn_register: "👷 कामगार नोंदणी करा",
+        q_biz: "कृपया आपल्या व्यवसायाचे नाव सांगा:",
+        q_contact: "संपर्क व्यक्तीचे नाव काय आहे?",
+        q_location: "कामाचे ठिकाण कोठे आहे? (परिसर / शहर)",
+        q_date: "कोणत्या तारखेला कामगार हवे आहेत?",
+        q_time: "कामगारांनी किती वाजता यावे? (उदा. सकाळी ९:००)",
+        q_duration: "काम किती तासांचे आहे? (उदा. ४ तास, ८ तास)",
+        q_workers: "किती कामगार हवे आहेत? (उदा. २, ४, १०)",
+        q_pay: "प्रत्येक कामगाराचे मानधन किती असेल? (उदा. ₹७५०/दिवस)",
+        summary_title: "📋 कृपया बुकिंग तपशीलांची खात्री करा:",
+        btn_confirm: "✅ निश्चित करा (Confirm)",
+        btn_cancel: "❌ रद्द करा (Cancel)",
+        confirmed_msg: "🎉 बुकिंग निश्चित झाली! जवळपासच्या कामगारांना वेव १ अलर्ट पाठवला आहे. कामगारांनी स्वीकार केल्यावर तुम्हाला अपडेट मिळेल.",
+        w_welcome: "क्रूटॅप कामगार नोंदणीत आपले स्वागत आहे! 👷\nआपले पूर्ण नाव काय आहे?",
+        w_area: "तुम्हाला कोणत्या भागात काम करायला आवडेल? (उदा. अंधेरी, पुणे, ठाणे)",
+        w_skills: "तुमचे कौशल्य काय आहे? (उदा. लोडर, वेटर, हेल्पर)",
+        w_avail: "तुम्ही कधी उपलब्ध आहात? (उदा. दररोज, शनिवार-रविवार)",
+        w_consent: "तुम्हाला व्हॉट्सॲपवर कामाचे अलर्ट हवे आहेत का? पुढे जाण्यासाठी 'होय' निवडा.",
+        w_done: "✅ नोंदणी यशस्वी झाली! नवीन काम आल्यास तुम्हाला व्हॉट्सॲपवर लगेच अलर्ट मिळेल.",
+        alert_mock: "🚨 त्वरित काम: अंधेरी येथे उद्या सकाळी ९ वाजता ४ लोडर हवे आहेत. मानधन: ₹७५०. स्वीकारण्यासाठी निश्चित करा!",
+        btn_accept: "✅ निश्चित करा",
+        btn_decline: "❌ नको",
+        claimed_msg: "🎯 काम बुक झाले! तुमची जागा आरक्षित आहे. संपर्क: राजेश (मॅनेजर)."
+      }
+    };
+
+    /* Simulator Runtime State */
+    let simMode = 'client'; // 'client' or 'worker'
+    let simLang = 'en';
+    let simStep = 0;
+    let simData = {
+      biz: 'Celebrate Catering Co.',
+      contact: 'Vikram Sharma',
+      location: 'Andheri East, Mumbai',
+      date: 'Tomorrow',
+      time: '09:00 AM',
+      duration: '8 Hours',
+      workers: '4 Workers',
+      pay: '₹750 / worker'
+    };
+
+    /* Update Phone Time */
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      hours = hours < 10 ? '0' + hours : hours;
+      const el = document.getElementById('phoneClock');
+      if (el) el.textContent = `${hours}:${minutes}`;
+    }
+    setInterval(updateClock, 10000);
+    updateClock();
+
+    /* Switch Simulator Language */
+    function setSimLanguage(lang) {
+      simLang = lang;
+      // Sync buttons
+      document.querySelectorAll('#globalLangSwitch .lang-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+      resetSimulator();
+    }
+
+    /* Global Nav Language Buttons */
+    document.querySelectorAll('#globalLangSwitch .lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang');
+        setSimLanguage(lang);
+      });
+    });
+
+    /* Switch Client vs Worker Simulator Mode */
+    function switchSimMode(mode) {
+      simMode = mode;
+      document.getElementById('modeClientBtn').classList.toggle('active', mode === 'client');
+      document.getElementById('modeWorkerBtn').classList.toggle('active', mode === 'worker');
+      resetSimulator();
+    }
+
+    /* Helper: Append Message to WhatsApp Screen */
+    function appendMessage(text, isOutgoing = false, buttons = []) {
+      const chatBody = document.getElementById('chatBody');
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${isOutgoing ? 'msg-outgoing' : 'msg-incoming'}`;
+
+      let formattedText = text.replace(/\n/g, '<br>');
+
+      let html = `<div>${formattedText}</div>`;
+
+      if (buttons && buttons.length > 0) {
+        html += `<div class="wa-buttons-card">`;
+        buttons.forEach((btn, idx) => {
+          html += `
+            <button class="wa-choice-btn ${btn.isPrimary ? 'primary-cta' : ''}" onclick="handleSimulatorAction('${btn.action}', '${encodeURIComponent(btn.text)}')">
+              ${btn.icon || ''} ${btn.text}
+            </button>
+          `;
+        });
+        html += `</div>`;
+      }
+
+      html += `
+        <span class="msg-time">
+          ${timeStr}
+          ${isOutgoing ? '<span class="check-blue">✓✓</span>' : ''}
+        </span>
+      `;
+
+      msgDiv.innerHTML = html;
+      chatBody.appendChild(msgDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    /* Show simulated typing delay */
+    function simulateBotReply(replyFn, delay = 500) {
+      const indicator = document.getElementById('typingIndicator');
+      indicator.classList.add('active');
+      const chatBody = document.getElementById('chatBody');
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      setTimeout(() => {
+        indicator.classList.remove('active');
+        replyFn();
+      }, delay);
+    }
+
+    /* Reset and start simulator flow */
+    function resetSimulator() {
+      const chatBody = document.getElementById('chatBody');
+      chatBody.innerHTML = `
+        <div class="date-badge-wrap">
+          <span class="wa-date-pill">TODAY</span>
+        </div>
+      `;
+      simStep = 0;
+      updateStepGuide();
+
+      const t = SIM_I18N[simLang] || SIM_I18N.en;
+
+      if (simMode === 'client') {
+        appendMessage(t.welcome, false, [
+          { text: t.btn_get_workers, action: 'start_client', isPrimary: true },
+          { text: t.btn_register, action: 'switch_to_worker' }
+        ]);
+      } else {
+        appendMessage(t.w_welcome, false);
+      }
+    }
+
+    /* Update step-by-step guidance card */
+    function updateStepGuide() {
+      const guide = document.getElementById('simStepGuide');
+      if (simMode === 'client') {
+        guide.innerHTML = `
+          <div class="step-indicator">
+            <div class="step-number">1</div>
+            <div class="step-text">
+              <h4>Requirement Questionnaire</h4>
+              <p>Bot collects date, duration, location, worker count, and budget.</p>
+            </div>
+          </div>
+          <div class="step-indicator">
+            <div class="step-number">2</div>
+            <div class="step-text">
+              <h4>Summary Card Confirmation</h4>
+              <p>Employer reviews and confirms details before wave dispatch.</p>
+            </div>
+          </div>
+          <div class="step-indicator">
+            <div class="step-number">3</div>
+            <div class="step-text">
+              <h4>Atomic Wave Matching</h4>
+              <p>Top 5 nearby workers get WhatsApp alerts; instant claim without races.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        guide.innerHTML = `
+          <div class="step-indicator">
+            <div class="step-number">1</div>
+            <div class="step-text">
+              <h4>Worker Registration</h4>
+              <p>Worker shares preferred locations, skill categories, and availability.</p>
+            </div>
+          </div>
+          <div class="step-indicator">
+            <div class="step-number">2</div>
+            <div class="step-text">
+              <h4>WhatsApp Consent Opt-In</h4>
+              <p>Ensures 100% compliance with WhatsApp Business notification policies.</p>
+            </div>
+          </div>
+          <div class="step-indicator">
+            <div class="step-number">3</div>
+            <div class="step-text">
+              <h4>1-Tap Shift Claiming</h4>
+              <p>Workers get instant notifications and tap "Confirm" to take the job.</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    /* Handle Simulator Button Click */
+    function handleSimulatorAction(action, encodedText) {
+      const text = decodeURIComponent(encodedText);
+      const t = SIM_I18N[simLang] || SIM_I18N.en;
+
+      // 1. Output the user's action as outgoing message
+      appendMessage(text, true);
+
+      // 2. Handle flow transitions
+      if (action === 'switch_to_worker') {
+        switchSimMode('worker');
+        return;
+      }
+
+      if (action === 'start_client') {
+        simulateBotReply(() => {
+          appendMessage(t.q_biz, false);
+          simStep = 1;
+        });
+        return;
+      }
+
+      if (action === 'select_date') {
+        simData.date = text;
+        simulateBotReply(() => {
+          appendMessage(`${t.q_time}\n(Default: 09:00 AM)`, false, [
+            { text: "09:00 AM (Morning)", action: "select_time" },
+            { text: "02:00 PM (Afternoon)", action: "select_time" },
+            { text: "08:00 PM (Night)", action: "select_time" }
+          ]);
+          simStep = 4;
+        });
+        return;
+      }
+
+      if (action === 'select_time') {
+        simData.time = text;
+        simulateBotReply(() => {
+          appendMessage(`${t.q_duration}`, false, [
+            { text: "4 Hours (Half Day)", action: "select_duration" },
+            { text: "8 Hours (Full Day)", action: "select_duration" },
+            { text: "12 Hours (Extended)", action: "select_duration" }
+          ]);
+          simStep = 5;
+        });
+        return;
+      }
+
+      if (action === 'select_duration') {
+        simData.duration = text;
+        simulateBotReply(() => {
+          appendMessage(`${t.q_workers}`, false, [
+            { text: "2 Workers", action: "select_workers" },
+            { text: "4 Workers", action: "select_workers" },
+            { text: "8 Workers", action: "select_workers" }
+          ]);
+          simStep = 6;
+        });
+        return;
+      }
+
+      if (action === 'select_workers') {
+        simData.workers = text;
+        simulateBotReply(() => {
+          const summaryCard = `
+${t.summary_title}
+🏢 Business: ${simData.biz}
+👤 Contact: ${simData.contact}
+📍 Location: ${simData.location}
+📅 Date: ${simData.date}
+⏰ Time: ${simData.time}
+⏱️ Duration: ${simData.duration}
+👷 Crew Size: ${simData.workers}
+💰 Rate: ₹750 / worker
+          `.trim();
+
+          appendMessage(summaryCard, false, [
+            { text: t.btn_confirm, action: "confirm_booking", isPrimary: true },
+            { text: t.btn_cancel, action: "cancel_booking" }
+          ]);
+          simStep = 7;
+        });
+        return;
+      }
+
+      if (action === 'confirm_booking') {
+        simulateBotReply(() => {
+          appendMessage(t.confirmed_msg, false);
+          // Auto simulate worker receiving alert after 3 seconds
+          setTimeout(() => {
+            appendMessage(`🔔 [Simulated Worker Perspective]\n${t.alert_mock}`, false, [
+              { text: t.btn_accept, action: "claim_shift", isPrimary: true },
+              { text: t.btn_decline, action: "decline_shift" }
+            ]);
+          }, 2000);
+        });
+        return;
+      }
+
+      if (action === 'cancel_booking') {
+        simulateBotReply(() => {
+          appendMessage("❌ Booking cancelled. Type 'Hi' anytime to restart.", false);
+        });
+        return;
+      }
+
+      if (action === 'claim_shift') {
+        simulateBotReply(() => {
+          appendMessage(t.claimed_msg, false);
+        });
+        return;
+      }
+
+      if (action === 'decline_shift') {
+        simulateBotReply(() => {
+          appendMessage("Alert declined. Wave alerting has re-routed this shift to the next qualified worker in queue.", false);
+        });
+        return;
+      }
+
+      if (action === 'worker_consent') {
+        simulateBotReply(() => {
+          appendMessage(t.w_done, false);
+          setTimeout(() => {
+            appendMessage(t.alert_mock, false, [
+              { text: t.btn_accept, action: "claim_shift", isPrimary: true },
+              { text: t.btn_decline, action: "decline_shift" }
+            ]);
+          }, 2000);
+        });
+        return;
+      }
+    }
+
+    /* Handle Custom Free Text Input in Simulator */
+    function handleSendText() {
+      const input = document.getElementById('waInputBox');
+      const text = (input.value || '').trim();
+      if (!text) return;
+
+      input.value = '';
+      appendMessage(text, true);
+
+      const t = SIM_I18N[simLang] || SIM_I18N.en;
+
+      if (simMode === 'client') {
+        if (simStep === 1) {
+          simData.biz = text;
+          simulateBotReply(() => {
+            appendMessage(t.q_contact, false);
+            simStep = 2;
+          });
+        } else if (simStep === 2) {
+          simData.contact = text;
+          simulateBotReply(() => {
+            appendMessage(t.q_location, false);
+            simStep = 3;
+          });
+        } else if (simStep === 3) {
+          simData.location = text;
+          simulateBotReply(() => {
+            appendMessage(t.q_date, false, [
+              { text: "Today (आज)", action: "select_date" },
+              { text: "Tomorrow (उद्या)", action: "select_date" },
+              { text: "This Weekend", action: "select_date" }
+            ]);
+          });
+        } else {
+          simulateBotReply(() => {
+            appendMessage(t.welcome, false, [
+              { text: t.btn_get_workers, action: 'start_client', isPrimary: true },
+              { text: t.btn_register, action: 'switch_to_worker' }
+            ]);
+          });
+        }
+      } else {
+        // Worker registration free text steps
+        if (simStep === 0) {
+          simulateBotReply(() => {
+            appendMessage(t.w_area, false);
+            simStep = 1;
+          });
+        } else if (simStep === 1) {
+          simulateBotReply(() => {
+            appendMessage(t.w_skills, false);
+            simStep = 2;
+          });
+        } else if (simStep === 2) {
+          simulateBotReply(() => {
+            appendMessage(t.w_avail, false);
+            simStep = 3;
+          });
+        } else if (simStep === 3) {
+          simulateBotReply(() => {
+            appendMessage(t.w_consent, false, [
+              { text: "YES / हाँ / होय", action: "worker_consent", isPrimary: true },
+              { text: "NO / नहीं / नाही", action: "cancel_booking" }
+            ]);
+          });
+        }
+      }
+    }
+
+    function handleInputKeyPress(e) {
+      if (e.key === 'Enter') {
+        handleSendText();
+      }
+    }
+
+    /* Initialize Simulator */
+    resetSimulator();
+
+    /* ==========================================================================
+       Interactive Shift Cost & Headcount Calculator
+       ========================================================================== */
+    let currentCalcDuration = 8;
+
+    function setCalcDuration(hours) {
+      currentCalcDuration = hours;
+      document.querySelectorAll('.duration-btn').forEach(b => {
+        b.classList.toggle('active', parseInt(b.getAttribute('data-hours')) === hours);
+      });
+      document.getElementById('valDurationLabel').textContent = `${hours} Hours (${hours === 4 ? 'Half Shift' : hours === 8 ? 'Full Shift' : 'Extended'})`;
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      const slider = document.getElementById('sliderWorkers');
+      const count = parseInt(slider.value, 10);
+      document.getElementById('valWorkerCount').textContent = `${count} Worker${count > 1 ? 's' : ''}`;
+
+      const roleSelect = document.getElementById('calcRoleSelect');
+      const base8hRate = parseInt(roleSelect.value, 10);
+      const roleName = roleSelect.options[roleSelect.selectedIndex].getAttribute('data-role');
+
+      // Adjust rate for 4h or 12h
+      let adjustedWorkerRate = base8hRate;
+      if (currentCalcDuration === 4) {
+        adjustedWorkerRate = Math.round(base8hRate * 0.65);
+      } else if (currentCalcDuration === 12) {
+        adjustedWorkerRate = Math.round(base8hRate * 1.5);
+      }
+
+      const totalCost = adjustedWorkerRate * count;
+
+      document.getElementById('resBaseRate').textContent = `₹${adjustedWorkerRate.toLocaleString('en-IN')}`;
+      document.getElementById('resHeadcount').textContent = `${count} Crew Members`;
+      document.getElementById('resTotalCost').textContent = `₹${totalCost.toLocaleString('en-IN')}`;
+
+      // Update CTA Link with customized pre-filled WhatsApp message
+      const bookBtn = document.getElementById('calcBookBtn');
+      const citySelect = document.getElementById('calcCitySelect');
+      const cityName = citySelect.options[citySelect.selectedIndex].text;
+      
+      const prefillMsg = encodeURIComponent(
+        `Hi CrewTap! 🛠️ I want to book ${count} workers for ${roleName} in ${cityName}.\nDuration: ${currentCalcDuration} Hours\nBudget: ₹${adjustedWorkerRate}/worker.`
+      );
+      bookBtn.href = `https://wa.me/?text=${prefillMsg}`;
+    }
+
+    updateCalculator();
+
+    /* ==========================================================================
+       Industry Categories Filter
+       ========================================================================== */
+    const categoryTabs = document.querySelectorAll('.cat-tab-btn');
+    const categoryCards = document.querySelectorAll('.cat-card');
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.getAttribute('data-filter');
+        categoryCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ==========================================================================
+       How It Works Dual Track Switcher
+       ========================================================================== */
+    function switchHiwTrack(track) {
+      document.getElementById('hiwClientBtn').classList.toggle('active', track === 'client');
+      document.getElementById('hiwWorkerBtn').classList.toggle('active', track === 'worker');
+
+      document.getElementById('hiwClientTrack').classList.toggle('active', track === 'client');
+      document.getElementById('hiwWorkerTrack').classList.toggle('active', track === 'worker');
+    }
+
+    /* ==========================================================================
+       FAQ Accordion
+       ========================================================================== */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        
+        // Close other items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    /* ==========================================================================
+       Mobile Navigation Menu Toggle
+       ========================================================================== */
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        const isShown = navLinks.style.display === 'flex';
+        navLinks.style.display = isShown ? 'none' : 'flex';
+        if (!isShown) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '100%';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#070B14';
+          navLinks.style.padding = '1.5rem';
+          navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
